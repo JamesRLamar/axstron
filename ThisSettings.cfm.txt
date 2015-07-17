@@ -1,0 +1,43 @@
+<!---AXS TRON 1.0--->
+
+<!---THIS--->
+
+<cfset THIS.NAME = "axstron" & hash(getCurrentTemplatePath()) />
+
+<cfset THIS.DATASOURCE = "axstron" />
+
+<!---SCRIPTPROTECT ON "FORM" VARIABLES WILL BLOCK CERTAIN HTML MARKUP FROM BEING INSERTED INTO TABLES--->
+
+<cfset THIS.SCRIPTPROTECT = "CGI,URL,COOKIE,FORM">
+
+<!---ORM--->
+
+<cfset THIS.MAPPINGS = {'/models' = '#getDirectoryFromPath(getCurrentTemplatePath())#models'}/>
+
+<cfset THIS.ORMENABLED = "true" />
+
+<cfset THIS.ORMSETTINGS.DBCREATE = "update"/>
+
+<cfset THIS.ORMSETTINGS.DIALECT = "MySQL"/>
+
+<cfset THIS.ORMSETTINGS.CFCLOCATION = "models">
+
+<!---SESSION--->
+
+<cfset THIS.SESSIONMANAGEMENT = true />
+
+<cfset THIS.LOGINSTORAGE = "SESSION" />
+
+<cfset THIS.SESSIONTIMEOUT = CreateTimeSpan(
+
+0, <!--- Days. --->
+
+	0, <!--- Hours. --->
+
+		30, <!--- Minutes. --->
+
+			0 <!--- Seconds. ---> ) />
+
+<cfset THIS.SETCLIENTCOOKIES = true />
+
+<cfsetting showdebugoutput="true" requesttimeout="1000"/>
